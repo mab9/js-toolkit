@@ -9,7 +9,7 @@ let direction = north;
 const clockwise = [north, east, south, west, north];
 const countercw = [north, west, south, east, north];
 
-let snake_solution1 = [
+let snake_objects = [
     {x: 10, y: 5},
     {x: 10, y: 6},
     {x: 10, y: 7},
@@ -44,7 +44,7 @@ function start() {
 function nextBoard() {
     const maxX = 20;
     const maxY = 20;
-    const oldHead = snake_solution1[0];
+    const oldHead = snake_objects[0];
 
     function inBounds(x, max) {
         if (x < 0)   { return max - 1 }
@@ -61,10 +61,10 @@ function nextBoard() {
         food.x = Math.floor(Math.random() * 20);   // place new food at random location
         food.y = Math.floor(Math.random() * 20);
     } else {
-        snake_solution1.pop(); // no food found => no growth despite new head => remove last element
+        snake_objects.pop(); // no food found => no growth despite new head => remove last element
     }
 
-    snake_solution1.unshift(head); // put head at front of the list
+    snake_objects.unshift(head); // put head at front of the list
 }
 
 function display(context) {
@@ -73,11 +73,11 @@ function display(context) {
     context.fillRect(0, 0, canvas.width, canvas.height);
     // draw all elements
     context.fillStyle = "cyan";
-    snake_solution1.forEach(element =>
+    snake_objects.forEach(element =>
         fillBox(context, element)
     );
     context.fillStyle = "green";
-    fillBox(context, snake_solution1[0]);
+    fillBox(context, snake_objects[0]);
     // draw food
     context.fillStyle = "red";
     fillBox(context, food);

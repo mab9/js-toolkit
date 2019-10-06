@@ -3,7 +3,7 @@
 
 <h1>Testing Snake</h1>
 
-<script language="javascript" src="snake_solution1.js">
+<script language="javascript" src="snake_objects.js">
 </script>
 <pre>
 
@@ -11,20 +11,20 @@
 
 let ok = [];
 
-// before start, snake_solution2 is in start position
-ok.push(snakeEquals(snake_solution1[0] , {x: 10, y: 5} ));
+// before start, snake_functional is in start position
+ok.push(snakeEquals(snake_objects[0] , {x: 10, y: 5} ));
 
-// after one step, snake_solution2 has moved up
+// after one step, snake_functional has moved up
 nextBoard();
-ok.push(snakeEquals(snake_solution1[0] , {x: 10, y: 4} ));
+ok.push(snakeEquals(snake_objects[0] , {x: 10, y: 4} ));
 
-// before eating food, snake_solution2 is of size 4
-ok.push(snake_solution1.length === 4);
+// before eating food, snake_functional is of size 4
+ok.push(snake_objects.length === 4);
 
-// after eating food, snake_solution2 has grown in size
+// after eating food, snake_functional has grown in size
 food = {x: 10, y: 3};
 nextBoard();
-ok.push(snake_solution1.length === 5);
+ok.push(snake_objects.length === 5);
 
 // current direction is north
 ok.push(direction === north);
