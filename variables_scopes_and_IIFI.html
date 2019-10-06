@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scopes and IIFI Imediately invoked function expression</title>
+</head>
+<body>
+    <script>
+
+        ////////////////////////////////////////////////////////////////////////////
+        // IIFE immediately invoked function expression
+        //
+        function foo() { document.writeln("<p>Foo 1 was invoked first</p>")} foo();
+
+        (function foo() { document.writeln("<p>Foo 2 was invoked</p>") }) ();
+
+        (function() {document.writeln("<p>Foo 3 was invoked </p>")}) ();
+
+        ( () => { document.writeln("<p>Foo 4 was invoked</p>") }) ();
+        
+
+        ////////////////////////////////////////////////////////////////////////////
+        // JavaScript Variables and Scopes
+        //
+        // x       = ... mutable, global scope (in scope after first use)
+        // var x   = ... mutable, "hoisted" scope (hoisted means that the declaration
+        //                        is changed to the top of the function
+        // let x   = ... mutable, local scope
+        // const x = ... immutable, local scope
+
+
+        (()=>{
+            let inFunctionScope = 1;
+            globalScope = 2;
+            document.writeln("Inside Function Scope mit let                  : " + inFunctionScope);
+            document.writeln("<p></p>");
+            document.writeln("Inside Function Scope without var / let / const: " + globalScope);
+            document.writeln("<p></p>");
+        }) ();
+
+
+      //document.writeln("Out of Function Scope mit let                  : " + inFunctionScope);
+        document.writeln("Out of Function Scope mit let                  : ReferenceError: inFunctionScope is not defined" );
+        document.writeln("<p></p>");
+        document.writeln("Out of Function Scope without variable typ/ let / const: " + globalScope);
+        document.writeln("<p></p>");
+
+        // mit let: Reference Error can't find variable i / i ist not defined etc.
+        // ohne variable var / let / const: wird das äussere ebenfalls ausgegeben
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
