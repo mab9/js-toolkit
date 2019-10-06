@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html><head></head><body>
+
+<h1>Testing Snake</h1>
+
+<script src="ball_solution1.js">
+</script>
+
+      <canvas id="canvas" width="400" height="400" >
+  </canvas>
+
+<pre>
+<script>
+
+let ok = [];
+
+// 0  before start, ball_solution1 is in start position
+ok.push(ballEqual(ball_solution1, {x: 20, y: 0, dx: 5, dy: 1}));
+
+// 1. after first step ball_solution1 has moved down and to the right side
+nextBoard();
+ok.push(ballEqual(ball_solution1, {x: 25, y: 2, dx: 5, dy: 2}));
+
+// 2. current direction / forces is still correct -> falling and to the right
+nextBoard();
+ok.push(ball_solution1.dx > 0 && ball_solution1.dy > 0);
+
+// 3. current x and y position and velocity
+nextBoard();
+ok.push(ballEqual(ball_solution1, {x: 35, y: 9, dx: 5, dy: 4}));
+
+// 4. change direction when ball_solution1 is bumping on the ground
+ball_solution1.x = 35; ball_solution1.y = 395; ball_solution1.dx = 5; ball_solution1.dy= 14;
+nextBoard();
+ok.push(ballEqual(ball_solution1, {x: 40, y: 382, dx: 5, dy: -13}));
+
+// 5. change direction when ball_solution1 speed is 0 -> return to the ground
+ball_solution1.x = 35; ball_solution1.y = 200; ball_solution1.dx = 5; ball_solution1.dy= -1;
+nextBoard();
+ok.push(ballEqual(ball_solution1, {x: 40, y: 200, dx: 5, dy: 0}));
+
+// 6. change direction when ball_solution1 speed is 0 -> return to the ground
+ball_solution1.x = 35; ball_solution1.y = 200; ball_solution1.dx = 5; ball_solution1.dy= -1;
+nextBoard();
+ok.push(ballEqual(ball_solution1, {x: 40, y: 200, dx: 5, dy: 0}));
+
+// 7.  direction when ball_solution1 speed is 0 -> return to the ground
+ball_solution1.x = 35; ball_solution1.y = 390; ball_solution1.dx = 5; ball_solution1.dy= 24;
+nextBoard();
+ok.push(ballEqual(ball_solution1, {x: 40, y: 367, dx: 5, dy: -23}));
+
+console.info(ball_solution1);
+nextBoard()
+console.info(ball_solution1);
+
+
+// test result report
+if ( ok.every( elem => elem) ) {
+    document.writeln("All "+ ok.length +" tests ok.");
+} else {
+    document.writeln("Not all tests ok! Details:");
+    for (let i = 0; i<ok.length; i++) {
+        if(ok[i]) {
+            document.writeln("Test "+ i +" ok");
+        } else {
+            document.writeln("Test "+ i +" failed");
+        }
+    }
+}
+
+ball_solution1.x=20; ball_solution1.y=0; ball_solution1.dx= 5; ball_solution1.dy= 1;
+//start();
+
+</script>
+
+</pre>
+</body>
+<html>
