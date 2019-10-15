@@ -120,8 +120,9 @@
             (console.error)
             (x => console.log(x));
 
-        const eShow = e => e(console.error)(x => console.log("Result is: " + x));
+        const eShow = e => e(x => console.error("Cannot divide by 0"))(x => console.log("Result is: " + x));
         eShow(safeDiv(1)(1));
+        eShow(safeDiv(1)(0));
 
 
         ////////////////////////////////////////////////////////////////////////////
