@@ -65,10 +65,24 @@
         const Right = x => f => g => g(x);          // ctor 2
         const either = e => f => g => e(f)(g);      // accessor
 
+
+        /////////////////////
+        // In der Funktionalen Programmierung versuchen wir immer mit Ausdrücken zu programmieren.
+        //
+        // Statements - die die etwas machen sind Satements   console.log("jej"); document.writeln("div")
+        // Ausdrücke  - die die etwas berechnen sind Ausdrücke.
+
+        // go around null / undefined
+
         // Maybe - go around null / undefined
         const Nothing = Left();
         const Just = Right;
         const maybe = either;
+
+
+        //
+
+
 
         //maybe(expressionThatMightGoWrong)
         //      (handleBad)
@@ -76,7 +90,7 @@
 
 
         // monoid and functor
-        //
+        //  // todo siehe slides 5 scirpting
         //
 
 
