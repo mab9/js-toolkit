@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+  </head>
+  <body>
+    <script>
+        const modules = [
+            'lambda_kalkuel',
+            'variablenfreie_programmierung',
+        ];
+
+        document.writeln(`<script src="./testReport.js"><` + `/script>`);
+
+        modules.forEach(module => {
+            // tempalte String -> Backtick  ` dann kann man mit ${var} variablen verwenden
+
+            document.writeln(`<p>Testreport of module: ./${module}</p>`);   // Iterpolierter String
+            document.writeln(`<script src="./${module}.js"><` + `/script>`);   // Iterpolierter String
+        });
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+

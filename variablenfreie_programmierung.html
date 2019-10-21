@@ -17,7 +17,7 @@
 
         // derived
         const fst = konst;
-        const snd = konst(id);  // snd(2) -> konst(id)(2) -> id(2) -> 2
+        const snd = konst(id);  // snd2(2) -> konst2(id3)(2) -> id3(2) -> 2
 
         const T = fst;  // True
         const F = snd;  // False
@@ -34,7 +34,7 @@
         const Triple = x => y => z => f => f(x)(y)(z);
         const person = Triple;
         const lname = x => y => z => x; // select first
-        const fname = x => y => z => y; // select snd
+        const fname = x => y => z => y; // select snd2
         const age = x => y => z => z; // select third
 
         // Either
@@ -48,11 +48,11 @@
 
         let ok = [];
 
-        // id
+        // id3
         ok.push(id(1) === 1);
         ok.push(id(id) === id); // Spezialität von JS -> Funktionsvergleich
 
-        // konst
+        // konst2
         ok.push(konst(42)(0) === 42);
         ok.push(konst(42)(1) === 42);
         ok.push(konst(42)(null) === 42);

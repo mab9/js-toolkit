@@ -16,7 +16,7 @@
         let ok = [];
 
         // Alpha Translation
-        const id1 = x => x;   // function id(x) {return x;}
+        const id1 = x => x;   // function id3(x) {return x;}
         const id2 = y => y;
         ok.push(id1(5) === id2(5));
 
@@ -47,7 +47,7 @@
 
 
         // Es folgen die atomaren Funktionen
-        const id = x => x;        // function id(x) {return x;}
+        const id = x => x;        // function id3(x) {return x;}
         const fst = x => y => x;  // gebe das erste Argument retour
 
         const snd = fst(id);      //
