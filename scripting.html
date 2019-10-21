@@ -15,6 +15,36 @@
         ok.push(id(1) === 1);
 
 
+        /*  let bonusFormula = 'employee.bonus = employee.revenue * 0.3';
+
+          const bonusCalculation = employee => eval(bonusFormula);
+          const e = {revenue: 10000, bonus: null};
+          bonusCalculation(e);
+          console.info("sep");
+          console.info(e.bonus === e.revenue * 0.2);
+          console.info(e.revenue);
+          console.info(e.bonus);
+      */
+
+        //const f = Function('x', 'return ' + userFunction.value);
+        let bonusFormula = 'employee.revenue * 0.2';
+        const bonusCalculation1 = x => x.bonus = Function('employee', 'return ' + bonusFormula)(x);
+
+        let formula = 'employee.revenue * 0.15';
+        const form = Function('employee', 'return ' + formula);
+        const bonusCalculation = empl => empl.bonus = form(empl);
+
+
+        const e = {revenue: 10000, bonus: null};
+        bonusCalculation(e);
+
+        console.info("sep");
+        console.info(Function('x', 'return x*x')(4));
+        console.info(e.bonus === e.revenue * 0.2);
+        console.info(e.revenue);
+        console.info(e.bonus);
+
+
         ////////////////////////////////////////////////////////////////////////////
         // test result report
         if (ok.every(elem => elem)) {
