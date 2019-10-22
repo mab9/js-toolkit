@@ -22,5 +22,5 @@
         ok.push(num === (25 + index));
     });
 
-    printTestReport(testReportTitle, ok);
+    report(testReportTitle, ok);
 })();

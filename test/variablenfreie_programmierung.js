@@ -118,5 +118,5 @@
     eShow(safeDiv(1)(1));
     eShow(safeDiv(1)(0));
 
-    printTestReport(testReportTitle, ok);
+    report(testReportTitle, ok);
 })();

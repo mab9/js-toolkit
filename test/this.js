@@ -46,5 +46,5 @@
     ok.push(other.getName() === "Other Boy");
     ok.push(good2.getName() === "Other Boy"); // OOPS! We have accidentally overwritten the good boy.
 
-    printTestReport(testReportTitle, ok);
+    report(testReportTitle, ok);
 })();

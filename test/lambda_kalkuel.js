@@ -52,5 +52,5 @@
 
 
     ok.push(false);
-    printTestReport(testReportTitle, ok);
+    report(testReportTitle, ok);
 })();

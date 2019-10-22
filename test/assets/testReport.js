@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////
 // Test Report - print test results
 
-function printTestReport(module, ok) {
+function report(module, ok) {
 
     if (ok.every(elem => elem)) {
         //document.writeln("All " + ok.length + " tests ok.");
