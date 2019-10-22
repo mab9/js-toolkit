@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Test</title>
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen"/>
   </head>
   <body>
     <script>
@@ -15,11 +16,16 @@
 
         modules.forEach(module => {
             // tempalte String -> Backtick  ` dann kann man mit ${var} variablen verwenden
-
-            document.writeln(`<p>Testreport of module: ./${module}</p>`);   // Iterpolierter String
             document.writeln(`<script src="./${module}.js"><` + `/script>`);   // Iterpolierter String
+            document.writeln("</br>");
         });
     </script>
+    <div class="block">
+      <div class="align">
+        <div class="chip error">7 failed</div>
+      </div>
+      <div class="title">Module: Test Modul</div>
+    </div>
   </body>
 </html>
 

@@ -1,5 +1,7 @@
 (() => {
 
+    const testReportTitle = "Lambda Kalkuel";
+
 ////////////////////////////////////////////////////////////////////////////
 // Lambda Kalkuel mit Tests
 // Alpha = Parameter umbenennen
@@ -49,5 +51,6 @@
     ok.push(snd(3)(4) === 4);      // kleiner Trick -> damit er den zweiten ausgeben kann.
 
 
-    printTestReport(ok);
+    ok.push(false);
+    printTestReport(testReportTitle, ok);
 })();

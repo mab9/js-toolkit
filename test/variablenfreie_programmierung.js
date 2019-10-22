@@ -1,6 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////
 // Variablenfreie Programmierung
 (() => {
+    const testReportTitle = "Variablen freie Programmierung";
     console.info("hell");
     let ok = [];
 
@@ -117,5 +118,5 @@
     eShow(safeDiv(1)(1));
     eShow(safeDiv(1)(0));
 
-    printTestReport(ok);
+    printTestReport(testReportTitle, ok);
 })();
