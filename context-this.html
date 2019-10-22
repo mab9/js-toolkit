@@ -17,6 +17,22 @@
 
 
         ///////////////////////
+        //
+
+        const good = {
+            firstname: "Good",
+            lastname: "Boy",
+            getName: function () {
+                return this.firstname + " " + this.lastname
+            }
+        };
+
+        // this bezieht sich auf: das was vor getName() steht.
+        // good.getName -> this === good
+        // getName als funktion in einer variable -> this === global
+
+
+        ///////////////////////
         //  Object and functions
         // https://www.youtube.com/watch?v=su-SdgebJCE
 
@@ -111,10 +127,6 @@
         //        Example fz = x.f   === window.fz()
 
 
-
-
-
-
         ///////////////////////
         // .bind(this) better approach
         // https://www.youtube.com/watch?v=PNqoehDEZ3E
@@ -164,9 +176,6 @@
         contact.printLaterBetter();  // check the console!
 
 
-
-
-
         ///////////////////////
         // Arrow Syntax => to automatically bind .bind(this)
         // https://www.youtube.com/watch?v=QQ4__W9nELc
@@ -183,8 +192,6 @@
         f.call(contact);
         f.apply(contact);
         // the difference is how to pass other parameter
-
-
 
 
         ////////////////////////////////////////////////////////////////////////////
