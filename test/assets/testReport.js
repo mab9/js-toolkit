@@ -10,7 +10,7 @@ function printTestReport(module, ok) {
                 <div class="align">
                   <div class="chip success">${ok.length} passed</div>
                 </div>
-                <div class="title">Module: ${module}</div>
+                <div class="title">module: ${module}</div>
                 </div>`);
     } else {
         let failed = ok.filter(x => x === false);
@@ -18,7 +18,7 @@ function printTestReport(module, ok) {
                             <div class="align">
                               <div class="chip error">${failed.length} failed</div>
                             </div>
-                            <div class="title">Module: ${module}</div>
+                            <div class="title">module: ${module}</div>
                             </div>`);
     }
 }
