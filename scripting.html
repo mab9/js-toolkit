@@ -28,7 +28,7 @@
 
         //const f = Function('x', 'return ' + userFunction.value);
         let bonusFormula = 'employee.revenue * 0.2';
-        const bonusCalculation1 = x => x.bonus = Function('employee', 'return ' + bonusFormula)(x);
+        const bonusCalculation = x => x.bonus = Function('employee', 'return ' + bonusFormula)(x);
 
         let formula = 'employee.revenue * 0.15';
         const form = Function('employee', 'return ' + formula);
