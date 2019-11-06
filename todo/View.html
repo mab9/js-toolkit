@@ -13,9 +13,9 @@
         }
     </style>
 </head>
-<body onload="startTodo()">
+<body onload="startTodo(todoContainer)">
 
-<button onclick="addTodo()">Add Todo</button>
+<button onclick="addTodo(numberOfTasks)">Add Todo</button>
 
 <table>
     <thead></thead>
@@ -26,7 +26,6 @@
 
 <div>Number of Tasks: <span id="numberOfTasks">0</span></div>
 <div>Open Tasks: <span id="openTasks">0</span></div>
-
 
 <script src="todo.js"></script>
 
