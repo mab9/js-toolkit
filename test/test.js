@@ -82,13 +82,17 @@
         }
     };
     const doError = x => { throw new Error() };
-    let errorCount = failSafe(2)(null);
+    let errorCount = failSafe(1)(doError);
+    //let errorCount = failSafe(2)(null);
     //let errorCount = failSafe(2)(x => 3*x);
 
     ok.push(failSafe(false)(x => x)(true));
     ok.push(failSafe(true)(doError)(null));
     ok.push(1 === failSafe(1)(doError)(null));
-    ok.push(2 === errorCount(2));
+    ok.push(errorCount(null) === 1);
+//  ok.push(2 === errorCount(2));
+
+    ok.push(failSafe(false)(x=>x)(true) &&  failSafe(true)(doError)(null));
 
     report(testReportTitle, ok);
 })();
