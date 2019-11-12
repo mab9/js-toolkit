@@ -20,22 +20,13 @@
     // 15 es 6 classes
     // 16 prototypes and inhertiance
     // 16a function composition
-    const composeAll = (...fns) => x => fns.reduceRight((y, f) => f(y), x);
 
     const inc = x => x + 1;
     const double = x => x * 2;
-    /*
-        https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Function/bind
-    */
+
     Function.prototype.then = function (fnc) {
         return (v) => fnc(this(v));
-        // return composeAll(this, fnc)
-        // return fnc.reduceRight((y, f) => f(y), x);
-        //return composeAll.bind(this)(this, fnc);
     };
-
-    ok.push(composeAll(double, double)(2) === 8);
-    ok.push(composeAll(inc, double, double)(2) === 9);
     ok.push(inc.then(double)(2) === 6);
 
 
