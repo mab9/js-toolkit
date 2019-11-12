@@ -1,9 +1,9 @@
 (() => {
 
-    const testReportTitle = "Test Js - to use for temporary tests";
+    const testReportTitle = "Solutions - homework stuff";
 
-    let ok = []
-    ok.push(true);
+
+    let ok = [];
     // 14a array equivalence
     Array.prototype.eq = function (second) {
         const first = this;
@@ -16,5 +16,11 @@
     ok.push(![1, 15, 39].eq([1, 15, 39, 4]));
     ok.push([1, 15, 39, 4].eq([1, 15, 39, 4]));
     ok.push(![1, 15, 39, 4].eq([1, 15, 39, 5]));
+
+    // 15 es 6 classes
+    // 16 prototypes and inhertiance
+    // 16a function composition
+    // 17 object encoding without classes, this, or new
+    // 18a failsafe callback
     report(testReportTitle, ok);
 })();
