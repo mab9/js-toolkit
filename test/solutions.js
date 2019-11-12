@@ -22,5 +22,21 @@
     // 16a function composition
     // 17 object encoding without classes, this, or new
     // 18a failsafe callback
+        const failSafe = defaultVal => callback => arg => {
+        try {
+    //        console.info("default val: " + defaultVal);
+            return callback(arg);
+        } catch (e) {
+            return defaultVal;
+        }
+    };
+    const doError = x => { throw new Error() };
+    let errorCount = failSafe(1)(doError);
+
+    ok.push(failSafe(false)(x => x)(true));
+    ok.push(failSafe(true)(doError)(null));
+    ok.push(errorCount(null) === 1);
+
+    ok.push(failSafe(false)(x=>x)(true) &&  failSafe(true)(doError)(null));
     report(testReportTitle, ok);
 })();
