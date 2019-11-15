@@ -1,11 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
     <meta charset="UTF-8">
-    <title>Test</title>
+    <title>Mab's JS-Toolkit</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
     <link rel="stylesheet" type="text/css" href="assets/style.css" media="screen"/>
+
   </head>
   <body>
+    <div class="w3-container w3-flat-midnight-blue">
+      <h2>Mab's JS-Toolkit</h2>
+      <p>Toolkit with a lot of fancy JS tricks</p>
+    </div>
+
+    <!--
+     <div class="w3-panel w3-card w3-flat-sun-flower"><p>w3-card</p></div>
+    <div class="w3-panel w3-card-2 w3-flat-orange"><p>w3-card-2</p></div>
+    <div class="w3-panel w3-card-4 w3-flat-midnight-blue"><p>w3-card-4</p></div>
+   -->
     <script>
         const modules = [
             'lambda_kalkuel',
@@ -28,17 +45,8 @@
         modules.forEach(module => {
             // tempalte String -> Backtick  ` dann kann man mit ${var} variablen verwenden
             document.writeln(`<script src="./${module}.js"><` + `/script>`);   // Iterpolierter String
-            document.writeln("</br>");
         });
     </script>
-    <!--
-    <div class="block">
-      <div class="align">
-        <div class="chip error">7 failed</div>
-      </div>
-      <div class="title">Module: Test Modul</div>
-    </div>
-    -->
   </body>
 </html>
 
