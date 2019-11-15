@@ -12,7 +12,7 @@
     let personen = ["bob", "alice", "foo"];
 
 
-    let found = personen.find( element => {
+    let found = personen.find(element => {
         console.log(element);                             // iterate over all, change elements
         return element === "alice"                        // stop iteration
     });
@@ -22,10 +22,10 @@
     let array1 = [1, 18, 42, 16, 49];
     let array2 = [1, 18, 42, 17, 49];
 
-    ok.push(!array1.every( (it, index) => it > 15));
+    ok.push(!array1.every((it, index) => it > 15));
     // evaluate each item
 
-    ok.push(array1.some( (it, index) => it === array2[index]));
+    ok.push(array1.some((it, index) => it === array2[index]));
     // gibt es iergend ein element, das in array 1 nicht in array 2 ist
 
     report(testReportTitle, ok);

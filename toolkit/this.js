@@ -1,15 +1,16 @@
 (() => {
 
     const testReportTitle = "This context";
-
-////////////////////////////////////////////////////////////////////////////
-//
-// this bezieht sich auf: das was vor getName() steht.
-// good.getName -> this === good
-// getName als funktion in einer variable -> this === global
-//
-
     let ok = [];
+
+
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // this bezieht sich auf: das was vor getName() steht.
+    // good.getName -> this === good
+    // getName als funktion in einer variable -> this === global
+    //
+
 
     firstname = 'global'; //
     lastname = 'boy';

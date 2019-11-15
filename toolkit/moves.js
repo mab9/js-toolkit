@@ -1,6 +1,7 @@
 (() => {
 
     const testReportTitle = "Moves ";
+    let ok = [];
 
     ////////////////////////////////////////////////////////////////////////////
     //
@@ -28,7 +29,6 @@
     //                          Vor jedem push auf shared Repo!
     // 6 Retrospektive:         Was beibehalten, was nächstes mal anders machen?
 
-    let ok = [];
 
     const collect = (10).times( n => n+1 );
 
@@ -36,10 +36,7 @@
     ok.push(collect[0] === 1);
     ok.push(collect[9] === 11);
 
-    console.error("fehler");  // erster Schritt ist es technisch möglich den Fehler sichtbar zu machen...
-
-
-
+    //console.error("fehler");  // erster Schritt ist es technisch möglich den Fehler sichtbar zu machen...
 
 
     report(testReportTitle, ok);
