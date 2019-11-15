@@ -1,7 +1,7 @@
 (() => {
 
     const testReportTitle = "Objects ";
-
+    let ok = [];
     ////////////////////////////////////////////////////////////////////////////
     //
     // 3 verschiedene Arten
