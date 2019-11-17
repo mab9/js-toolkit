@@ -141,5 +141,32 @@
     ok.push(plus(10)(6) === 16);
 
 
+
+    function Todo(text) {
+        let done = false;
+        const check = () => this.done = true;
+        const uncheck = () => done = false;
+        return {
+            getText: () => text,
+            isDone:  () => done,
+            check:   () => check,
+            check2:  () => done = true,
+            uncheck:  uncheck
+        }
+    }
+
+    let todo = Todo("buy mil");
+    todo.check();
+    ok.push(todo.isDone() === false);
+
+    todo.check2();
+    ok.push(todo.isDone());
+
+    todo.check2();
+    ok.push(todo.isDone());
+
+    todo.uncheck();
+    ok.push(todo.isDone() === false);
+
     report(testReportTitle, ok);
 })();
