@@ -29,6 +29,10 @@
         getName() {
             return this.firstname + " " + this.lastname
         }
+
+        isCool() {
+            return this.firstname;
+        }
     }
 
     const PersonObject = (() => { // lexical scope
@@ -50,6 +54,22 @@
     ok.push(personObject instanceof PersonObject);
 
 
+    ok.push(personClass.isCool() === "Class");
+    // let isCool = personClass.isCool;
+    // ok.push(isCool() === "Class");       // "this" is undefined
+
+    let worker = new PersonClass("Best", "Worker");
+    worker.lastname = "All Time Worker";
+    ok.push(worker.getName() === "Best All Time Worker");
+
+    PersonClass.prototype.isCool = () => true;
+    // worker.prototype.isCool = () => false;    // prototype is undefined!
+    ok.push(worker.isCool());
+    ok.push(personClass.isCool());
+
+
+
+
     // extend
     //
     // - Syntactic sugar für den Aufbau der prototype chain
@@ -63,10 +83,23 @@
     }
 
     const student = new Student("Top", "Student", 5.5);
+    ok.push(student instanceof Student);
     ok.push(student instanceof PersonClass);
     ok.push(student.grade === 5.5);
 
 
+    const prof = { };
+    Object.setPrototypeOf(prof, PersonClass.prototype);
+    ok.push(prof instanceof PersonClass);
+
+    Object.setPrototypeOf(prof, PersonClass);
+    ok.push(prof instanceof PersonClass === false);
+
+    Object.setPrototypeOf(Student.prototype, PersonClass.prototype);
+    ok.push(student instanceof Student);
+    ok.push(student instanceof PersonClass);
+
+
+
     report(testReportTitle, ok);
-})
-();
+})();
