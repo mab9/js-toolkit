@@ -5,12 +5,28 @@
     ////////////////////////////////////////////////////////////////////////////
     //
     // 3 verschiedene Arten
-    // - Offen, dynamisch
-    // - Geschlossen, explizit
-    // - Mixed, typ-behaftet
+    // - JS objects      -> veränderbar, keine instanceof
+    // - Closure Scope   -> unveränderbar, keine instanceof
+    // - New             -> veränderbar, mit instanceof
 
 
-    // Offen, dynamisch
+    // Prototype
+    //
+    // - Klassifiziert Objekte ähnlich wie ein Typ
+    // - Verwaltet gemeinsame Eigenschaften
+    // - Ist selbst ein Objekt
+    // - Ermittelbar, z.B. mit instanceof
+
+    // New
+    //
+    // - Erzeugt neuen Runtime-Scope
+    // - Ruft die Konstruktor-Funktion auf
+    // - (kein lambda)
+    // - Setzt den Prototyp
+
+
+    // Offen, dynamisch - JS objects
+    //
     // - no safety but super dynamic
     // - unobvious how to share structure
     // - beware of "this"!
@@ -22,8 +38,30 @@
         }
     };
 
-    // Geschlossen, explizit
-    // - closure scope, no "this"
+    ok.push(good.getName() === good.firstname + " " + good.lastname);
+    good.firstname = "Bad";
+    ok.push(good.getName() === good.firstname + " " + good.lastname);
+    ok.push(good.getName() === "Bad" + " " + good.lastname);
+
+    // global scope
+    let gFirstname = firstname;
+    let gLastname = lastname;
+
+    let name = good.getName;
+    ok.push(name() === gFirstname + " " + gLastname);
+
+    name = good.getName();
+    ok.push(name === "Bad" + " " + good.lastname);
+
+    // good is an jS Object..
+    ok.push(good instanceof Object);
+
+
+
+
+
+    // Geschlossen, explizit - closure scope, no "this"
+    //
     // - best safety, easy to share structure
     // - but no "type"
 
@@ -37,9 +75,17 @@
         }
     }
 
+    let lad = Person("lad", "sut");
+    ok.push(lad.getName() === "lad sut");
 
-    // Mixed, typ-behaftet
-    // - enforces "new"
+    // no instance of!
+    ok.push(lad instanceof Person === false);
+    ok.push(lad.prototype === undefined);
+
+
+
+    // Mixed, typ-behaftet - enforces "new"
+    //
     // - new Person2("Good", "Boy") instanceof Person
     // - alle Instanzen können über den Prototyp
     //   gleichzeitig geändert werden!
@@ -56,7 +102,23 @@
         return Person2;
     })(); // IIFE
 
+    let mab = Person2("mab", "bru");
+    ok.push(mab === undefined);
 
+    mab = new Person2("mab", "bru");
+    ok.push(mab.getName() === "mab bru");
+    ok.push(mab instanceof Person2);
+
+    lad = new Person2("lad", "sut");
+    ok.push(lad.getName() === "lad sut");
+    ok.push(lad instanceof Person2);
+
+    Person2.prototype.getName = function() {
+        return this.firstname + " gniesser";
+    };
+
+    ok.push(mab.getName() === "mab gniesser");
+    ok.push(lad.getName() === "lad gniesser");
 
     report(testReportTitle, ok);
 })
