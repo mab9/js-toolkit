@@ -82,6 +82,8 @@
     ok.push(lad instanceof Person === false);
     ok.push(lad.prototype === undefined);
 
+    // no direct access
+    //  lad.firstname = "..";   does not exists!
 
 
     // Mixed, typ-behaftet - enforces "new"
@@ -113,6 +115,13 @@
     ok.push(lad.getName() === "lad sut");
     ok.push(lad instanceof Person2);
 
+    // direct access on attributes
+    ok.push(mab.firstname === "mab");
+    mab.firstname = "mab2";         // <--- direct access
+    ok.push(mab.getName() === "mab2 bru");
+    mab.firstname = "mab"; // rollback
+
+    // update function for all instances
     Person2.prototype.getName = function() {
         return this.firstname + " gniesser";
     };
