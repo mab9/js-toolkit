@@ -16,8 +16,9 @@
     <div class="w3-container w3-flat-midnight-blue">
       <h2>Mab's JS-Toolkit</h2>
       <p>Toolkit with a lot of fancy JS tricks</p>
-      <div id="toolContainer"></div>
     </div>
+
+    <div id="toolContainer"></div>
 
     <!--
      <div class="w3-panel w3-card w3-flat-sun-flower"><p>w3-card</p></div>
@@ -48,8 +49,8 @@
         ];
 
         const toolkitController = ToolkitController();
-        //const toolBox = ToolItemView(toolkitController, document.getElementById('toolContainer'));
-        //toolkitController.addTool("Test");
+        const toolBox = ToolItemView(toolkitController, document.getElementById('toolContainer'));
+        toolkitController.addTool("Test");
 
         modules.forEach(module => {
             // tempalte String -> Backtick  ` dann kann man mit ${var} variablen verwenden

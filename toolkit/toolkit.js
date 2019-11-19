@@ -29,17 +29,18 @@ const ToolItemView = (toolkitController, rootElement) => {
 
     const render = tool => {
         console.info("Render tool " + tool);
+        console.info(tool);
         function createElements() {
             const template = document.createElement('DIV'); // only for parsing
             template.innerHTML = `
                 <div class="w3-panel w3-card">
-                  <p> module </p>
+                  <p> module - mod mod module </p>
                 </div>           
             `;
             return template.children;
         }
         const [test] = createElements();
-        rootElement.appendChild(test());
+        rootElement.appendChild(test);
     };
 
     toolkitController.onAddTool(render);
