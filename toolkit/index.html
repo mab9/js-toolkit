@@ -16,6 +16,7 @@
     <div class="w3-container w3-flat-midnight-blue">
       <h2>Mab's JS-Toolkit</h2>
       <p>Toolkit with a lot of fancy JS tricks</p>
+      <div id="toolContainer"></div>
     </div>
 
     <!--
@@ -23,11 +24,16 @@
     <div class="w3-panel w3-card-2 w3-flat-orange"><p>w3-card-2</p></div>
     <div class="w3-panel w3-card-4 w3-flat-midnight-blue"><p>w3-card-4</p></div>
    -->
+    <script src="toolkit.js"></script>
+    <script src="utils/observable.js"></script>
+    <script src="utils/test.js"></script>
+
     <script>
         const modules = [
             'lambda_kalkuel',
             'functional',
             'solutions',
+            'boolObject',
             'this',
             'arrays',
             'slice_and_splice',
@@ -35,12 +41,15 @@
             'objects',
             'classes',
             'functions',
+            'observable',
             'map_filter_reduce',
             'scripting',
             'test',
         ];
 
-        document.writeln(`<script src="utils/test.js"><` + `/script>`);
+        const toolkitController = ToolkitController();
+        //const toolBox = ToolItemView(toolkitController, document.getElementById('toolContainer'));
+        //toolkitController.addTool("Test");
 
         modules.forEach(module => {
             // tempalte String -> Backtick  ` dann kann man mit ${var} variablen verwenden
