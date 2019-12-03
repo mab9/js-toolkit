@@ -69,9 +69,18 @@ test("promise", assert => {
 
     console.info("------------");
 
+    const NullSafe = x => {
+        const isNullSafe = y => y && y.then;
+        const maywrap = y => NullSafe(y);
+        return {
+            then: fn => isNullSafe(x) || maywrap(fn)
+        }
+    };
 
 
-
+    NullSafe(1).then(console.log);                   // will call the log
+    NullSafe(null).then(console.log);                // will not call the log
+    NullSafe(2).then(x => null).then(console.log);
 
 // (1) if x is not null or undefined, call fn(x);
 // either way, make sure the result is a NullSafe
