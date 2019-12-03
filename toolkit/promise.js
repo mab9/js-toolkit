@@ -71,9 +71,16 @@ test("promise", assert => {
 
     const NullSafe = x => {
         const isNullSafe = y => y && y.then;
-        const maywrap = y => NullSafe(y);
+        const maywrap = y => new Promise((res, rej) => {
+            if (isNullSafe(y)) {
+                res(y);
+            } else {
+                rej(y)
+            }
+        });
+
         return {
-            then: fn => isNullSafe(x) || maywrap(fn)
+            then: fn => maywrap(fn)
         }
     };
 
