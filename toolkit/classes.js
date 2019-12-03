@@ -54,6 +54,13 @@ test("Classes", assert => {
     assert.equals(true, personObject instanceof PersonObject);
 
     assert.equals("Class", personClass.isCool());
+    assert.equals("Class", personClass.firstname);
+
+    personClass.firstname = false;
+    assert.equals(false, personClass.isCool());
+
+
+
     // let isCool = personClass.isCool;
     // ok.push(isCool() === "Class");       // "this" is undefined
 
@@ -66,6 +73,13 @@ test("Classes", assert => {
     assert.equals(true, worker.isCool());
     assert.equals(true, personClass.isCool());
 
+
+    const joe = {
+        name: "joe",
+        cool: personClass.isCool
+    };
+
+    assert.equals(true, joe.cool());
 
 
 
