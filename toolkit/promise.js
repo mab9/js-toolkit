@@ -69,34 +69,74 @@ test("promise", assert => {
 
     console.info("------------");
 
+
     const NullSafe = x => {
         const isNullSafe = y => y && y.then;
-        const maywrap = y => new Promise((res, rej) => {
-            if (isNullSafe(y)) {
-                res(y);
-            } else {
-                rej(y)
-            }
-        });
-
+        const maywrap = y => isNullSafe(y)
+            ? y
+            : NullSafe(y);
         return {
-            then: fn => maywrap(fn)
+            then: fn => {
+
+                // 1. es isch es NullSafe objekt
+                // 2. es isch kes
+                console.info("test mit vale 2");
+                let f = maywrap(x);
+                fn(f);
+                //fn(x)
+                //return maywrap(fn(x))
+            }
         }
     };
 
+    const test = NullSafe(null);
+    console.info("test mit vale");
 
-    NullSafe(1).then(console.log);                   // will call the log
-    NullSafe(null).then(console.log);                // will not call the log
-    NullSafe(2).then(x => null).then(console.log);
+    test.then(console.log)
+
+
+ //       .then(console.log);                   // will call the log
+  //  NullSafe(null).then(console.log);                // will not call the log
+  //  NullSafe(2).then(x => null).then(console.log); // will not call the log
+
+
+      /*
+        function doit(waszutunist) {
+        return function bla(arg) {
+            return waszutunist(arg)
+        }
+    }
+     */
+
+    /*
+       function NullCheck(x) {
+            return function then(fn) {
+                isNullSafe(ab)
+                mayWrap(ab)
+                return {
+                    return maywrap
+                }
+
+            }
+       }
+     */
+
 
 // (1) if x is not null or undefined, call fn(x);
 // either way, make sure the result is a NullSafe
-
-//NullSafe(1).then(console.log);                   // will call the log
-//NullSafe(null).then(console.log);                // will not call the log
-//NullSafe(2).then(x => null).then(console.log);
-
-
 // x_ and y_ are given. do not override.
 
+
+    /*
+                console.info("bevore " + x);
+                console.info(isNullSafe(x));
+                console.info(fn);
+                if (isNullSafe(x)) {
+                    console.info("is null safe");
+                    return fn(x);
+                } else {
+                    console.info("is not null safe");
+                    return NullSafe(x)
+                }
+     */
 });
