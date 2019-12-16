@@ -21,25 +21,6 @@
 
 
     ////////////////////////////////////////////////////////////////////////////
-    //
-    // For each function examples - have a look at array.js
-    //
-
-    let num1 = Number("25");
-    let num2 = Number("26");
-    let num3 = Number("27");
-
-    let nums = [];
-    nums.push(num1);
-    nums.push(num2);
-    nums.push(num3);
-
-    nums.forEach((num, index) => {
-        ok.push(num === (25 + index));
-    });
-
-
-    ////////////////////////////////////////////////////////////////////////////
     // Some Function facts
     //
     // - JS wird interpretiert und besitzt keinen Compiler
@@ -141,7 +122,6 @@
     ok.push(plus(10)(6) === 16);
 
 
-
     function Todo(text) {
         let done = false;
         const check = () => this.done = true;
@@ -167,6 +147,26 @@
 
     todo.uncheck();
     ok.push(todo.isDone() === false);
+
+
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // For each function examples - have a look at array.js
+    //
+
+    let num1 = Number("25");
+    let num2 = Number("26");
+    let num3 = Number("27");
+
+    let nums = [];
+    nums.push(num1);
+    nums.push(num2);
+    nums.push(num3);
+
+    nums.forEach((num, index) => {
+        ok.push(num === (25 + index));
+    });
+
 
     report(testReportTitle, ok);
 })();

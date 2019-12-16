@@ -84,6 +84,28 @@
 
 
 
+    // Unterschiedliche Möglichkeiten zum Functions nach Aussen zu definieren
+    const Studierender = () => {
+        let grade = 0;
+        const setGrade = x => grade = x;
+        const getGrade = () => grade;
+        return {
+            // nach Aussen geben wir folgendes frei
+
+            setGrade: setGrade,   // Intellij Ctrl + Alt + N zum Inline Refactorn
+            getGrade,             // oder abgekürzt
+            foo: () => 42
+        }
+    };
+
+    const studi = Studierender();
+    studi.setGrade(6.0);
+    ok.push(studi.getGrade() === 6);
+    ok.push(studi.foo() === 42);
+
+
+
+
 
 
     // New - Mixed, typ-behaftet - enforces "new"
