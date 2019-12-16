@@ -5,7 +5,7 @@ const Observable = value => {
     return {
         onChange: callback => {
             listeners.push(callback);
-            callback(value, value);
+            //callback(value, value);
         },
         getValue: ()       => value,
         setValue: newValue => {

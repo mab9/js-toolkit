@@ -70,7 +70,49 @@ test("promise", assert => {
     console.info("------------");
 
 
+    const idPromise = x => new Promise(resolve => resolve(x));
+    // idPromise(1).then(it => console.info("promise: " + it));
+    console.info(" test 3: " + idPromise(1));
+
+    const writer = x => {
+        // console.info("insiede writer: " + x);
+        return idPromise(x);
+    };
+
+//    const filterEven = n => n % 2 === 0 ? n : undefined;
+    const filterEven = n => {
+        if (n % 2 === 0) return n; else throw Error("not even")
+    };
+
+    idPromise(1)
+        .then(writer)
+        .then(filterEven)
+        .then(writer)
+        .catch(err => {
+        });
+
+
+    /*
+    idPromise(1)
+        .then(it => {console.info("yes " + it); return idPromise(it); })
+        .then(it => console.info("test : " + it))
+
+        idPromise(1)
+        .then(writer)
+        .then(filterEven)
+        .then(writer)
+     */
+
+
+    // NullSafe a.k.a Promise
+    //
+    // - Beispiel wie ein Promise von innen aussieht
+    // - NullSafe objects can be chained with their "then" function
+    //   just like Promises do, incl. auto-promotion of result values to NullSafe objects.
+
+
     const NullSafe = x => {
+        const getx = () => x; // zu Testzwecke
         const isNullSafe = y => y && y.then;
         const maywrap = y => isNullSafe(y)
             ? y
@@ -78,65 +120,40 @@ test("promise", assert => {
         return {
             then: fn => {
 
-                // 1. es isch es NullSafe objekt
-                // 2. es isch kes
-                console.info("test mit vale 2");
-                let f = maywrap(x);
-                fn(f);
-                //fn(x)
-                //return maywrap(fn(x))
-            }
+                // 1. Fall fn ist null oder ein Fehler und es wird nicht weitergefahren, nichts geloggt
+                // 2. Fall fn ist ein NullSafe Objekt (kommt z.B von einem async service zurückgesendet)
+                // 3. Fall fn ist ein Wert bei dem eine auto promotion zu einem NullSafe gemacht werden muss
+
+                // Achtung "" oder 0 soll erlaubt sein, deshalb nicht !x
+                if (x === null || x === undefined) {
+                    return NullSafe(x)
+                }
+
+                let result = fn(x);
+                return maywrap(result);
+            },
+            getx,
         }
     };
 
-    const test = NullSafe(null);
-    console.info("test mit vale");
+    const testAbort = NullSafe(null).then(x => x * 2);
+    assert.equals(testAbort.getx(), null);
 
-    test.then(console.log)
+    const testNullsafe = NullSafe(20).then(x => NullSafe(x));
+    assert.equals(testNullsafe.getx(), 20);
 
+    const testAutoPromote = NullSafe(1).then(x => x * 5);
+    assert.equals(testAutoPromote.getx(), 5);
 
- //       .then(console.log);                   // will call the log
-  //  NullSafe(null).then(console.log);                // will not call the log
-  //  NullSafe(2).then(x => null).then(console.log); // will not call the log
+    let x_ = 2;
+    let y_ = 3;
 
+    const result = NullSafe(x_)
+        .then(x => x * 2)        // must auto-promote
+        .then(x => NullSafe(x))  // must not auto-promote
+        .then(x => y_ = x + 1)   // store value, check no double promotion
+        .then(x => null)         // jump over rest
+        .then(x => x.mustNotBeCalled) !== null && y_ === x_ * 2 + 1;
 
-      /*
-        function doit(waszutunist) {
-        return function bla(arg) {
-            return waszutunist(arg)
-        }
-    }
-     */
-
-    /*
-       function NullCheck(x) {
-            return function then(fn) {
-                isNullSafe(ab)
-                mayWrap(ab)
-                return {
-                    return maywrap
-                }
-
-            }
-       }
-     */
-
-
-// (1) if x is not null or undefined, call fn(x);
-// either way, make sure the result is a NullSafe
-// x_ and y_ are given. do not override.
-
-
-    /*
-                console.info("bevore " + x);
-                console.info(isNullSafe(x));
-                console.info(fn);
-                if (isNullSafe(x)) {
-                    console.info("is null safe");
-                    return fn(x);
-                } else {
-                    console.info("is not null safe");
-                    return NullSafe(x)
-                }
-     */
+    assert.equals(result, true);
 });
