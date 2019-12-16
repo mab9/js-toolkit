@@ -109,8 +109,8 @@
         return accu;
     };
 
-    console.info([1, 2, 3].reduce(preOrder, []));
-    console.info([3, 2, 1]);
+    //console.info([1, 2, 3].reduce(preOrder, []));
+    //console.info([3, 2, 1]);
     ok.push([1, 2, 3].reduce(preOrder, []) !== [3, 2, 1]);  // this will never work!
 
 

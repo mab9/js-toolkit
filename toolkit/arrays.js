@@ -19,7 +19,7 @@
     let personen = ["bob", "alice", "foo"];
 
     let found = personen.find(element => {
-        console.log(element);                             // iterate over all, change elements
+        //console.log(element);                             // iterate over all, change elements
         return element === "alice"                        // stop iteration
     });
 

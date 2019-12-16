@@ -21,4 +21,15 @@ test("Conditions - && and ||", assert => {
 
     // pay attention -> does work for all values but
     // 6 that evaluates to false -> (false, 0, undefined, "", naN, )
+
+
+    const salaryCheck = y => y > 100000
+        ? "Wow not so bad salary"
+        : "Salary is not so good";
+
+    assert.equals(salaryCheck(105000), "Wow not so bad salary");
+    assert.equals(salaryCheck(50000), "Salary is not so good");
+
+
+    assert.equals(5 > 0 ? true : false, true);
 });

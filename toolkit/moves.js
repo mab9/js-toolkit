@@ -36,19 +36,22 @@
     // todo replace this example with example of todo application .... or some description how this "test framework" and this simple app was build
     // const collect = (10).times( n => n+1 );
 
+
+    let collect = [];
+
     Number.prototype.times = function (todoSoOften) {
         const myNumber = this.toFixed(0);
-        console.log(myNumber);
         for (let i = 0; i < myNumber; i++) {
+            collect.push(i);  // only for tests...
             todoSoOften(i);
         }
     };
 
-    const collect = (10).times( n => n+1 );
+    (10).times( n => n+1 );
 
     ok.push(collect.length === 10);
-    ok.push(collect[0] === 1);
-    ok.push(collect[9] === 11);
+    ok.push(collect[0] === 0);
+    ok.push(collect[9] === 9);
 
     //console.error("fehler");  // erster Schritt ist es technisch möglich den Fehler sichtbar zu machen...
 
