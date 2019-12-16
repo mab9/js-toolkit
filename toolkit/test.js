@@ -4,6 +4,7 @@
 
     let ok = [];
     ok.push(true);
+    ok.push(false);
 
 
     report(testReportTitle, ok);

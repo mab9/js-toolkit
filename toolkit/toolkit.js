@@ -34,7 +34,7 @@ const ToolItemView = (toolkitController, rootElement) => {
             const template = document.createElement('DIV'); // only for parsing
             template.innerHTML = `
                 <div class="w3-panel w3-card">
-                  <p> module - mod mod module </p>
+                  <p> module - ${tool} </p>
                 </div>           
             `;
             return template.children;
