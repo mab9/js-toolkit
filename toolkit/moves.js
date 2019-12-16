@@ -30,6 +30,20 @@
     // 6 Retrospektive:         Was beibehalten, was nächstes mal anders machen?
 
 
+
+
+
+    // todo replace this example with example of todo application .... or some description how this "test framework" and this simple app was build
+    // const collect = (10).times( n => n+1 );
+
+    Number.prototype.times = function (todoSoOften) {
+        const myNumber = this.toFixed(0);
+        console.log(myNumber);
+        for (let i = 0; i < myNumber; i++) {
+            todoSoOften(i);
+        }
+    };
+
     const collect = (10).times( n => n+1 );
 
     ok.push(collect.length === 10);
