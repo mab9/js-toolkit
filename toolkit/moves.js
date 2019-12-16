@@ -1,6 +1,6 @@
 (() => {
 
-    const testReportTitle = "Moves ";
+    const testReportTitle = "Moves - Vorgehen beim Implementieren von neuer Funktionalität";
     let ok = [];
 
     ////////////////////////////////////////////////////////////////////////////

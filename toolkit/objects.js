@@ -8,28 +8,25 @@
     // - JS objects      -> veränderbar, keine instanceof
     // - Closure Scope   -> unveränderbar, keine instanceof
     // - New             -> veränderbar, mit instanceof
-
-
-    // Prototype
     //
-    // - Klassifiziert Objekte ähnlich wie ein Typ
-    // - Verwaltet gemeinsame Eigenschaften
-    // - Ist selbst ein Objekt
-    // - Ermittelbar, z.B. mit instanceof
+    // - Prototype
+    //   - Klassifiziert Objekte ähnlich wie ein Typ
+    //   - Verwaltet gemeinsame Eigenschaften
+    //   - Ist selbst ein Objekt
+    //   - Ermittelbar, z.B. mit instanceof
+    // - New
+    //   - Erzeugt neuen Runtime-Scope
+    //   - Ruft die Konstruktor-Funktion auf
+    //   - (kein lambda)
+    //   - Setzt den Prototyp
 
-    // New
-    //
-    // - Erzeugt neuen Runtime-Scope
-    // - Ruft die Konstruktor-Funktion auf
-    // - (kein lambda)
-    // - Setzt den Prototyp
 
-
-    // Offen, dynamisch - JS objects
+    // JS objects - Offen, dynamisch
     //
     // - no safety but super dynamic
     // - unobvious how to share structure
     // - beware of "this"!
+
     const good = {
         firstname: "Good",
         lastname: "Boy",
@@ -60,7 +57,7 @@
 
 
 
-    // Geschlossen, explizit - closure scope, no "this"
+    // closure scope - Geschlossen, explizit, no "this"
     //
     // - best safety, easy to share structure
     // - but no "type"
@@ -86,7 +83,10 @@
     //  lad.firstname = "..";   does not exists!
 
 
-    // Mixed, typ-behaftet - enforces "new"
+
+
+
+    // New - Mixed, typ-behaftet - enforces "new"
     //
     // - new Person2("Good", "Boy") instanceof Person
     // - alle Instanzen können über den Prototyp
