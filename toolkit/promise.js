@@ -67,12 +67,9 @@ test("promise", assert => {
 
     */
 
-    console.info("------------");
-
-
     const idPromise = x => new Promise(resolve => resolve(x));
     // idPromise(1).then(it => console.info("promise: " + it));
-    console.info(" test 3: " + idPromise(1));
+    assert.equals(idPromise(1) !== 1, true);
 
     const writer = x => {
         // console.info("insiede writer: " + x);
@@ -110,7 +107,6 @@ test("promise", assert => {
     // - NullSafe objects can be chained with their "then" function
     //   just like Promises do, incl. auto-promotion of result values to NullSafe objects.
 
-
     const NullSafe = x => {
         const getx = () => x; // zu Testzwecke
         const isNullSafe = y => y && y.then;
@@ -136,14 +132,37 @@ test("promise", assert => {
         }
     };
 
+
+    const NullSafeShorten = x => {
+        const getx = () => x; // zu Testzwecke
+        const isNullSafe = y => y && y.then;
+        const maywrap = y => isNullSafe(y)
+            ? y
+            : NullSafe(y);
+        return {
+            then: fn => {
+                return (x === null || x === undefined)
+                    ? NullSafe(x)
+                    : maywrap(fn(x));
+            },
+            getx,
+        }
+    };
+
     const testAbort = NullSafe(null).then(x => x * 2);
+    const testAbort2 = NullSafeShorten(null).then(x => x * 2);
     assert.equals(testAbort.getx(), null);
+    assert.equals(testAbort2.getx(), null);
 
     const testNullsafe = NullSafe(20).then(x => NullSafe(x));
+    const testNullsafe2 = NullSafeShorten(20).then(x => NullSafe(x));
     assert.equals(testNullsafe.getx(), 20);
+    assert.equals(testNullsafe2.getx(), 20);
 
     const testAutoPromote = NullSafe(1).then(x => x * 5);
+    const testAutoPromote2 = NullSafeShorten(1).then(x => x * 5);
     assert.equals(testAutoPromote.getx(), 5);
+    assert.equals(testAutoPromote2.getx(), 5);
 
     let x_ = 2;
     let y_ = 3;
