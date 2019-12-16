@@ -25,81 +25,6 @@ test("Promise using the NullSafe example", assert => {
     // - hat ein catch  (wenn es davor eine exception gab, wird catch aufgerufen)
 
 
-    // process even gibt ein promise zurück
-    const processEven = i => new Promise((resolve, reject) => {    // Parameter die Funktionen sind
-            if (i % 2 === 0) {
-                resolve(i);               // success/failure callbacks
-            } else {
-                reject(i);
-            }
-        }
-    );
-
-    /*
-    processEven(4)
-        .then(it => {
-            console.log(it);
-            return it
-        })  // auto promotion, macht automatisch ein promise
-        .then(it => processEven(it + 1))
-        .catch(err => console.log("Error: " + err));
-
-
-    const processTrue = i => new Promise((resolve, reject) => {
-        if (i != undefined || i != null) {
-            resolve(i);               // success/failure callbacks
-        } else {
-            reject(i);
-        }
-    });
-
-    processTrue(true).then(it => {
-        console.log(it);
-        return false;
-    }).then(it => {
-        console.log(it);
-        return processTrue(null);
-    }).catch(err => console.log("Error: " + err));
-
-    */
-
-    const toPromise = x => new Promise(resolve => resolve(x));
-    assert.equals(toPromise(1) !== 1, true);
-
-    let data = [];
-    // return new promise
-    const writer = x => {
-        data.push(x);
-        return toPromise(x);
-    };
-
-//    const filterEven = n => n % 2 === 0 ? n : undefined;
-    const filterEven = n => {
-        if (n % 2 === 0) return n; else throw Error("not even")
-    };
-
-    toPromise(1)
-        .then(writer)
-        .then(filterEven)
-        .then(writer)
-        .catch(err => {
-        });
-
-
-    // assert.equals(data.length, 1);  // async
-
-    /*
-    idPromise(1)
-        .then(it => {console.info("yes " + it); return idPromise(it); })
-        .then(it => console.info("test : " + it))
-
-        idPromise(1)
-        .then(writer)
-        .then(filterEven)
-        .then(writer)
-     */
-
-
     // NullSafe a.k.a Promise
     //
     // - Beispiel wie ein Promise von innen aussieht
@@ -174,4 +99,87 @@ test("Promise using the NullSafe example", assert => {
         .then(x => x.mustNotBeCalled) !== null && y_ === x_ * 2 + 1;
 
     assert.equals(result, true);
+
+
+
+
+
+    // Beispiele von Promise Anwendungen
+    //
+    //
+    //
+
+    // process even gibt ein promise zurück
+    const processEven = i => new Promise((resolve, reject) => {    // Parameter die Funktionen sind
+            if (i % 2 === 0) {
+                resolve(i);               // success/failure callbacks
+            } else {
+                reject(i);
+            }
+        }
+    );
+
+    /*
+    processEven(4)
+        .then(it => {
+            console.log(it);
+            return it
+        })  // auto promotion, macht automatisch ein promise
+        .then(it => processEven(it + 1))
+        .catch(err => console.log("Error: " + err));
+
+
+    const processTrue = i => new Promise((resolve, reject) => {
+        if (i != undefined || i != null) {
+            resolve(i);               // success/failure callbacks
+        } else {
+            reject(i);
+        }
+    });
+
+    processTrue(true).then(it => {
+        console.log(it);
+        return false;
+    }).then(it => {
+        console.log(it);
+        return processTrue(null);
+    }).catch(err => console.log("Error: " + err));
+
+    */
+
+    const toPromise = x => new Promise(resolve => resolve(x));
+    assert.equals(toPromise(1) !== 1, true);
+
+    let data = [];
+    // return new promise
+    const writer = x => {
+        data.push(x);
+        return toPromise(x);
+    };
+
+//    const filterEven = n => n % 2 === 0 ? n : undefined;
+    const filterEven = n => {
+        if (n % 2 === 0) return n; else throw Error("not even")
+    };
+
+    toPromise(1)
+        .then(writer)
+        .then(filterEven)
+        .then(writer)
+        .catch(err => {
+        });
+
+
+    // assert.equals(data.length, 1);  // async
+
+    /*
+    idPromise(1)
+        .then(it => {console.info("yes " + it); return idPromise(it); })
+        .then(it => console.info("test : " + it))
+
+        idPromise(1)
+        .then(writer)
+        .then(filterEven)
+        .then(writer)
+     */
 });

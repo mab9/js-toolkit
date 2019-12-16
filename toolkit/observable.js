@@ -38,6 +38,16 @@ test("observable-value", assert => {
     //  value is updated
     assert.equals(secondAttribute.getValue(),  "thirdValue");
 
+
+    let sum = 0;
+    const trackable = Observable(0);
+    const callback = x => sum += trackable.getValue();
+
+    //trackable.onChange(x => sum += trackable.getValue());
+    trackable.onChange(callback);
+    trackable.setValue(2);
+    trackable.setValue(5);
+    assert.equals(sum, 7);
 });
 
 test("observable-list", assert => {
@@ -58,5 +68,4 @@ test("observable-list", assert => {
     assert.equals(delCount, 1);
     assert.equals(list.count(), 0);
     assert.equals(raw.length, 0);
-
 });
