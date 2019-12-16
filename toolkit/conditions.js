@@ -1,6 +1,6 @@
 // requires /toolkit/utils/test.js
 
-test("JS goodies - && and || evaluations", assert => {
+test("Conditions - && and ||", assert => {
 
     ////////////////////////////////////////////////////////////////////////////
     //
