@@ -105,6 +105,9 @@
             ? Left("schlecht!")
             : Right(num / divisor);
 
+    /*
+           Commented to not spam the console with unnecessary logs
+
     either(safeDiv(1)(1))
     (console.error)
     (x => console.log(x));
@@ -116,6 +119,6 @@
     const eShow = e => e(x => console.error("Cannot divide by 0"))(x => console.log("Result is: " + x));
     eShow(safeDiv(1)(1));
     eShow(safeDiv(1)(0));
-
+     */
     report(testReportTitle, ok);
 })();
