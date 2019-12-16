@@ -1,6 +1,6 @@
 // requires /toolkit/utils/test.js
 
-test("promise", assert => {
+test("Promise using the NullSafe example", assert => {
 
     ////////////////////////////////////////////////////////////////////////////
     //
@@ -63,13 +63,14 @@ test("promise", assert => {
 
     */
 
-    const idPromise = x => new Promise(resolve => resolve(x));
-    // idPromise(1).then(it => console.info("promise: " + it));
-    assert.equals(idPromise(1) !== 1, true);
+    const toPromise = x => new Promise(resolve => resolve(x));
+    assert.equals(toPromise(1) !== 1, true);
 
+    let data = [];
+    // return new promise
     const writer = x => {
-        // console.info("insiede writer: " + x);
-        return idPromise(x);
+        data.push(x);
+        return toPromise(x);
     };
 
 //    const filterEven = n => n % 2 === 0 ? n : undefined;
@@ -77,13 +78,15 @@ test("promise", assert => {
         if (n % 2 === 0) return n; else throw Error("not even")
     };
 
-    idPromise(1)
+    toPromise(1)
         .then(writer)
         .then(filterEven)
         .then(writer)
         .catch(err => {
         });
 
+
+    // assert.equals(data.length, 1);  // async
 
     /*
     idPromise(1)
