@@ -15,15 +15,23 @@ test("Objekte als boolsche Operatoren", assert => {
     // 6 NaN
 
 
-
     // person
-
     // let person
-
     // let person = { }
 
     // person && person.getAge && person.getAge()
     // assert.equals(person, undefined);  --> console output
+
+    isTrueCheck = value => value
+        ? value
+        : false;
+
+    assert.equals(isTrueCheck(null), false);
+    assert.equals(isTrueCheck(false), false);
+    assert.equals(isTrueCheck(undefined), false);
+    assert.equals(isTrueCheck(0), false);
+    assert.equals(isTrueCheck(""), false);
+    assert.equals(isTrueCheck(NaN), false);
 
 
 });

@@ -11,11 +11,8 @@
         // IIFE immediately invoked function expression
         //
         function foo() { document.writeln("<p>Foo 1 was invoked first</p>")} foo();
-
         (function foo() { document.writeln("<p>Foo 2 was invoked</p>") }) ();
-
         (function() {document.writeln("<p>Foo 3 was invoked </p>")}) ();
-
         ( () => { document.writeln("<p>Foo 4 was invoked</p>") }) ();
         
 

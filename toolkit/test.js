@@ -6,6 +6,5 @@
     ok.push(true);
 
 
-
     report(testReportTitle, ok);
 })();
