@@ -19,14 +19,10 @@ test("promise", assert => {
 
     // Promise
     //
-    // - hat ein then
+    // - Thenable / hat ein then. Then bekommt eine Funktione,
+    //   die wenn sie aufgerufen wird wieder ein Promis zurück gibt
+    // - muss prüfen ob ein Error throwed und oder rejecton aufgerufen wurde oder nicht
     // - hat ein catch  (wenn es davor eine exception gab, wird catch aufgerufen)
-
-    // Thenable
-    //
-    // - then bekommt eine Funktione, die wenn sie aufgerufen wird
-    //   wieder ein promis zurück gibt
-    // - muss prüfen ob ein error passiert wurde und rejecton oder nicht
 
 
     // process even gibt ein promise zurück
