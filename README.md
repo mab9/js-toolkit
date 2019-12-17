@@ -17,4 +17,9 @@
 
 - flow (unterschiedliche Versionen der JS Modules)
 - examples excel ball... 
-  
+
+
+## Important knowledge
+
+- prüfe die Fehler die deine Dependencies mitbringen! Welche Anzahl Fehler bringen Sie mit, brauche ich das?
+- Wenn es um Security geht -> gehärtete Browser nehmen, der nur genau die Applikation betreiben und sonst nicht zu gebrauchen sind!
