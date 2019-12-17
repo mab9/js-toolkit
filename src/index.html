@@ -22,9 +22,9 @@
     <div class="w3-panel w3-card-2 w3-flat-orange"><p>w3-card-2</p></div>
     <div class="w3-panel w3-card-4 w3-flat-midnight-blue"><p>w3-card-4</p></div>
    -->
-    <script src="toolkit.js"></script>
-    <script src="utils/observable.js"></script>
-    <script src="utils/test.js"></script>
+    <script src="./toolkit.js"></script>
+    <script src="./utils/observable.js"></script>
+    <script src="./utils/test.js"></script>
 
     <script>
         const modules = [
@@ -52,7 +52,7 @@
 
         modules.forEach(module => {
             // tempalte String -> Backtick  ` dann kann man mit ${var} variablen verwenden
-            document.writeln(`<script src="./${module}.js"><` + `/script>`);   // Iterpolierter String
+            document.writeln(`<script src="./modules/${module}.js"><` + `/script>`);   // Iterpolierter String
         });
     </script>
   </body>
