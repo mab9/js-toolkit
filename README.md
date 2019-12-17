@@ -12,3 +12,9 @@
   wann es sinnvoll ist alles zu ändern (neu zu schreiben) oder Schritt für Schritt vorzugehen.
   
   
+  
+## Wie ist der Code aufgebaut
+
+- flow (unterschiedliche Versionen der JS Modules)
+- examples excel ball... 
+  
