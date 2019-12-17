@@ -6,9 +6,6 @@
     <title>Mab's JS-Toolkit</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
     <link rel="stylesheet" type="text/css" href="assets/style.css" media="screen"/>
 
   </head>
@@ -52,7 +49,6 @@
 
         const toolkitController = ToolkitController();
         const toolBox = ToolItemView(toolkitController, document.getElementById('toolContainer'));
-        toolkitController.addTool("Test");  // todo finishi development... (do not mix scripting and gui behavior)
 
         modules.forEach(module => {
             // tempalte String -> Backtick  ` dann kann man mit ${var} variablen verwenden
