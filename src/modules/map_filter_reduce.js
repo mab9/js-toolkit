@@ -121,5 +121,64 @@
     ok.push([][0] === [][0]);
 
 
+    /*
+    Implement a function named 'palindrome' that tells whether a given string
+  is the same when read left-to-right and right-to-left, ignoring upper/lowercase differences
+  and any characters outside 'a' to 'z'. For example
+  palindrome('ABBA')  // true
+  palindrome('Abba')  // true
+  palindrome('A man, a plan, a canal: Panama!') // true
+
+  You must use the following helper functions (they are provided):
+  const str2chars = str  => [...str];            // convert a string to an array of chars
+  const isAlpha   = char => char.match(/[a-z]/); // char is in the alphabet
+
+  The question title contains implementation hints.
+
+
+  palindrome("Amore, Roma!")
+  && palindrome("Madam, I'm Adam!")
+  && palindrome("Never odd or even.")
+  && ! palindrome("Amore")
+
+     */
+
+
+    /*
+     // Reduce example ???
+        const preOrder = (accu, cur) => {
+            accu.unshift(cur);
+            return accu;
+        };
+
+        //console.info([1, 2, 3].reduce(preOrder, []));
+        //console.info([3, 2, 1]);
+        ok.push([1, 2, 3].reduce(preOrder, []) !== [3, 2, 1]);  // this will never work!
+
+        // REDUCE ein katamorphismus - "un-partial" reduce
+        const plus = (accu, cur) => accu + cur;
+        [1, 2, 3].reduce((accu, cur) => accu + cur);   // zu Beginn wird der accu auf die 1 und der cur auf die 2 gesetzt
+        [1, 2, 3].reduce(plus);                        // first: 1+2 = 3, second 3+3 = 6
+
+     */
+
+
+    // 1. convert into array         // map
+    // 2. remove all not alpha chars // filter
+    // 3. reduce
+
+    const str2chars = str => [...str];            // convert a string to an array of chars
+    const isAlpha = char => char.match(/[a-z]/); // char is in the alphabet
+
+    const palindrome = str => {
+        let cleaned = str2chars(str).map(char => char.toLowerCase()).filter(isAlpha);
+
+        return cleaned.reduce((acc, cur) => acc + cur)
+            === cleaned.reverse().reduce((acc, cur) => acc + cur);
+    };
+
+    palindrom("abb a,");
+    palindrom("ABBb a,");
+
     report(testReportTitle, ok);
 })();

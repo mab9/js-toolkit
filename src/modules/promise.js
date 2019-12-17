@@ -69,7 +69,6 @@ test("Promise using the NullSafe example", assert => {
                     ? NullSafe(x)
                     : maywrap(fn(x));
             },
-            getx,
         }
     };
 
