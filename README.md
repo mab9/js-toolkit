@@ -10,14 +10,16 @@
   Moves behereschen. Einen Plan machen und kontrolliertes Vorgehen. Führt zu schnellerem Fortschritt, mehr 
   Konsistenz und deutlich mehr Freude.  Die Kunst besteht darin, denn Break-even zu finde, 
   wann es sinnvoll ist alles zu ändern (neu zu schreiben) oder Schritt für Schritt vorzugehen.
-  
-  
-  
+    
 ## Wie ist der Code aufgebaut
 
-- flow (unterschiedliche Versionen der JS Modules)
-- examples excel ball... 
+- im src folder werden verschiedenste Themen von JS angegangen
+- das Toolkit wurde kontinuerlich weiterentwickelt. Demzufolge finden sich Patterns wieder, 
+  mit denen unterschiedliche Versionen getragen werden. Beispielsweise das Test Framework 
+- einige fancy Beispiele wie physic ball der ohne Formeln auskommt
+- es befinden sich zu den Modulen jeweils viele Tests, die ausprägungen von JS aufzeigen sollen. 
 
+Für Erweiterungen bin ich offen. 
 
 ## Important knowledge
 
