@@ -1,3 +1,5 @@
+//export { Suite, total }
+
 const Assert = () => {
     /** @type {Array<boolean>} */
     const ok = [];
@@ -41,3 +43,25 @@ const test = (origin, callback) => {
 function report(module, ok) {
     toolkitController.addTool(module, ok);
 }
+
+/*
+function Suite(suiteName) {
+    const tests = []; // [Test]
+    const suite = {
+        test: (testName, callback) => test(suiteName + "-"+ testName, callback),
+        add:  (testName, callback) => tests.push(Test (testName) (callback)),
+        run:  () => {
+            const suiteAssert = Assert();
+            tests.forEach( test => test(logic) (suiteAssert) );
+            total += suiteAssert.results.length;
+            if (suiteAssert.results.every( id )) { // whole suite was ok, report whole suite
+                report("suite " + suiteName, suiteAssert.results)
+            } else { // some test in suite failed, rerun tests for better error indication
+                tests.forEach( test => suite.test( test(name), test(logic) ) )
+            }
+        }
+    };
+    return suite;
+}
+*/
+
