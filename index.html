@@ -6,7 +6,7 @@
     <title>Mab's JS-Toolkit</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="assets/style.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="./src/assets/style.css" media="screen"/>
 
   </head>
   <body>
@@ -23,11 +23,11 @@
     <div class="w3-panel w3-card-4 w3-flat-midnight-blue"><p>w3-card-4</p></div>
    -->
     <script src="./toolkit.js"></script>
-    <script src="./utils/observable.js"></script>
-    <script src="./utils/test.js"></script>
+    <script src="./src/utils/observable.js"></script>
+    <script src="./src/utils/test.js"></script>
 
     <script>
-        const modules = [
+        const topics = [
             'test',
             'crazy',
             'lambda_kalkuel',
@@ -51,9 +51,9 @@
         const toolkitController = ToolkitController();
         const toolBox = ToolItemView(toolkitController, document.getElementById('toolContainer'));
 
-        modules.forEach(module => {
+        topics.forEach(module => {
             // tempalte String -> Backtick  ` dann kann man mit ${var} variablen verwenden
-            document.writeln(`<script src="./modules/${module}.js"><` + `/script>`);   // Iterpolierter String
+            document.writeln(`<script src="./src/topics/${module}.js"><` + `/script>`);   // Iterpolierter String
         });
     </script>
   </body>
