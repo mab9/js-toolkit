@@ -12,6 +12,8 @@ Mab's js-toolkit is my personal JS tech toolkit that helps me mastering my JS sk
 The toolkit addresses a wide range of JS issues such as objects, modules, functions, scripting and many more. 
 In addition to that, the toolkit implements patterns like MVC and Move.
 
+![js-toolkit overview](./img/js-toolkit.png "JS-toolkit")
+
 **"Führe Buch über deine Fehler"** Zitat von Dierk König
 
 **"Viele Sachen bringen, jeder kann sich etwas aussuchen"** Zitat von Dierk König (Prolog von Göthe)
